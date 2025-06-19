@@ -1,0 +1,65 @@
+/* Fondo galáctico usando gradientes y estrellas */
+body.galaxy-bg {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  color: #fff;
+  position: relative;
+  overflow-x: hidden;
+}
+body.galaxy-bg::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    repeating-radial-gradient(circle at 20% 30%, #fff 1px, transparent 2px, transparent 100px),
+    repeating-radial-gradient(circle at 70% 80%, #fff 1.5px, transparent 2px, transparent 120px),
+    repeating-radial-gradient(circle at 50% 50%, #fff 1px, transparent 2px, transparent 80px);
+  opacity: 0.3;
+}
+
+/* Estilos para las tarjetas de producto */
+.card {
+  background: radial-gradient(ellipse at bottom, #232946 0%, #141824 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #2d3250;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    repeating-radial-gradient(circle at 20% 30%, #fff 1px, transparent 2px, transparent 100px),
+    repeating-radial-gradient(circle at 70% 80%, #fff 1.5px, transparent 2px, transparent 120px),
+    repeating-radial-gradient(circle at 50% 50%, #fff 1px, transparent 2px, transparent 80px);
+  opacity: 0.18;
+}
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+.card-img-top {
+  min-height: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  width: 100%;
+  background: #181b2a;
+  display: block;
+}
+.card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Solo fondo galáctico, sin reglas de responsive ni tarjetas */

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eventos Activos | Nexogalax</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/galaxy-bg.css" rel="stylesheet">
+  <style>
+    .evento-destacado {
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 0 32px #000a;
+      margin-bottom: 2rem;
+    }
+    .evento-destacado img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .evento-card {
+      background: rgba(30,34,60,0.95);
+      color: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 0 16px #0006;
+      margin-bottom: 1.5rem;
+    }
+    .evento-timer {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body class="galaxy-bg">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Nexogalax</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="btn btn-outline-success me-2 mb-2 mb-lg-0" id="go-to-cart" href="index.html#cart-section">Ir al Carrito</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-primary" href="about.html">Sobre Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-info me-2 mb-2 mb-lg-0" href="juego.html">Juego</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-info me-2 mb-2 mb-lg-0" href="minijuegos.html">Minijuegos</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-info me-2 mb-2 mb-lg-0" href="mundo.html">Mundo</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-info me-2 mb-2 mb-lg-0" href="eventos.html">Eventos Activos</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-warning mb-2 mb-lg-0" href="tienda-virtual.html">Tienda Virtual</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container py-5">
+    <h1 class="text-center mb-4">Eventos Activos y Próximos</h1>
+    <!-- Evento mensual destacado -->
+    <div class="evento-destacado mb-5">
+      <img src="img/evento-mensual.jpg" alt="Evento Mensual Destacado">
+      <div class="p-4">
+        <h2 class="mb-2">Torneo Galáctico Mensual</h2>
+        <p class="mb-2">¡Participa en el evento más grande del mes! Compite con jugadores de todo el mundo y gana premios exclusivos.</p>
+        <div class="evento-timer" id="timer-mensual">Cargando...</div>
+        <button class="btn btn-warning mt-3" id="btn-mensual" href="#">Ingresar al evento</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="mb-3">Eventos Activos</h3>
+        <div class="evento-card p-3 mb-3">
+          <h4>Batalla de Clanes</h4>
+          <p>Enfrenta a otros clanes en desafíos semanales y gana recompensas.</p>
+          <div class="evento-timer" id="timer-activo1">Cargando...</div>
+          <button class="btn btn-success mt-2" href="#">Ingresar al evento</button>
+        </div>
+        <div class="evento-card p-3 mb-3">
+          <h4>Rally de Exploradores</h4>
+          <p>Explora el mundo de Nexogalax y encuentra tesoros ocultos.</p>
+          <div class="evento-timer" id="timer-activo2">Cargando...</div>
+          <button class="btn btn-success mt-2" href="#">Ingresar al evento</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h3 class="mb-3">Próximos Eventos</h3>
+        <div class="evento-card p-3 mb-3">
+          <h4>Festival de Avatares</h4>
+          <p>Personaliza tu avatar y participa en el desfile virtual. ¡Premios para los mejores looks!</p>
+          <div class="evento-timer" id="timer-proximo1">Cargando...</div>
+          <button class="btn btn-info mt-2" id="btn-proximo1" href="#">Avisarme</button>
+        </div>
+        <div class="evento-card p-3 mb-3">
+          <h4>Carrera Cósmica</h4>
+          <p>Compite en la carrera más rápida del metaverso. ¡Prepárate para la velocidad!</p>
+          <div class="evento-timer" id="timer-proximo2">Cargando...</div>
+          <button class="btn btn-info mt-2" id="btn-proximo2" href="#">Avisarme</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Fechas de ejemplo para los eventos
+    const eventos = [
+      { id: 'timer-mensual', fecha: new Date(Date.now() + 1000*60*60*24*3), tipo: 'activo', btn: 'btn-mensual' }, // 3 días
+      { id: 'timer-activo1', fecha: new Date(Date.now() + 1000*60*60*12), tipo: 'activo' }, // 12 horas
+      { id: 'timer-activo2', fecha: new Date(Date.now() + 1000*60*60*36), tipo: 'activo' }, // 36 horas
+      { id: 'timer-proximo1', fecha: new Date(Date.now() + 1000*60*60*72), tipo: 'proximo', btn: 'btn-proximo1' }, // 3 días
+      { id: 'timer-proximo2', fecha: new Date(Date.now() + 1000*60*60*120), tipo: 'proximo', btn: 'btn-proximo2' } // 5 días
+    ];
+    function actualizarTimers() {
+      const ahora = new Date();
+      eventos.forEach(ev => {
+        const timer = document.getElementById(ev.id);
+        if (!timer) return;
+        let diff = (ev.fecha - ahora) / 1000;
+        if (diff <= 0) {
+          timer.textContent = ev.tipo === 'activo' ? '¡Evento finalizado!' : '¡Evento iniciado!';
+          if (ev.btn) {
+            const btn = document.getElementById(ev.btn);
+            if (btn) btn.disabled = true;
+          }
+          return;
+        }
+        const dias = Math.floor(diff / 86400);
+        diff -= dias * 86400;
+        const horas = Math.floor(diff / 3600);
+        diff -= horas * 3600;
+        const minutos = Math.floor(diff / 60);
+        const segundos = Math.floor(diff % 60);
+        timer.textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s ${ev.tipo === 'activo' ? 'para finalizar' : 'para iniciar'}`;
+      });
+    }
+    setInterval(actualizarTimers, 1000);
+    actualizarTimers();
+  </script>
+</body>
+</html>
